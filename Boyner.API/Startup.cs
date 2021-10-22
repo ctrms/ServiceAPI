@@ -49,8 +49,8 @@ namespace Boyner.API
             services.AddMvc();
 
 
-            //string connectionString = $"Server=db;Database=master;User=sa;Password=Your_password123;";
-            string connectionString = $"Data Source =LAPTOP-TUECF3EV\\MSSQLSERVER1; Initial Catalog = BoynerDb; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False";
+            string connectionString = $"Server=db;Database=master;User=sa;Password=Your_password123;";
+            //string connectionString = $"Data Source =LAPTOP-TUECF3EV\\MSSQLSERVER1; Initial Catalog = BoynerDb; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False";
             services.AddDbContext<DbDataContext>(options =>
             {
                 options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Boyner.API"));
