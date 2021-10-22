@@ -1,0 +1,15 @@
+﻿version: '3'
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-CU13-ubuntu-20.04
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Your_password123"
+    ports:
+      - "1433:1433"
+  boyner-app:
+    depends_on:
+      - "db"
+    build: .
+    ports: 
+      - "8090:8080"

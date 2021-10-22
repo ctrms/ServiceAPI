@@ -9,6 +9,10 @@ namespace Boyner.API.Entities.Base
     {
         public DateTime CreateDate { get; protected set; }
         public DateTime? ModifyDate { get; protected set; }
-        public bool IsActive { get; protected set; }
+        public  bool IsActive { get; protected set; }
+        public void SetPassive()
+        {
+            IsActive = false;
+        }
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Boyner.API.Configurations
 {
-    public class CategoryConfiguration : BaseEntityConfiguration<Category>
+    public class CategoryConfiguration : AudiEntityConfiguration<Category>
     {
         public override void ConfigureEntity(EntityTypeBuilder<Category> builder)
         {

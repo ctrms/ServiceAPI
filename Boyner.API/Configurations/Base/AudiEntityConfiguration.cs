@@ -17,6 +17,9 @@ namespace Boyner.API.Configurations.Base
             builder.HasKey(p => p.Id);
             builder.Property(p => p.CreateDate).IsRequired();
             builder.HasQueryFilter(p => p.IsActive);
+            builder.Property(p => p.CreateDate).IsRequired();
+            builder.Property(p => p.CreateDate).HasDefaultValueSql("GETDATE()").IsRequired();
+            builder.Property(p => p.IsActive).HasDefaultValue(true).IsRequired();
         }
     }
 }

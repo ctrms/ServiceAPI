@@ -10,7 +10,7 @@ namespace Boyner.API.Entities.Base
     public abstract class Entity<TId> where TId : IComparable, IConvertible, IComparable<TId>, IEquatable<TId>
     {
         public virtual TId Id { get; protected set; }
-
+        
         public bool IsTransient()
         {
             return EqualityComparer<TId>.Default.Equals(this.Id, default(TId));

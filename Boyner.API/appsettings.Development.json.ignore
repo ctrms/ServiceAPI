@@ -2,6 +2,12 @@
   "ConnectionStrings": {
     "DefaultConnection": "Server=LAPTOP-TUECF3EV\\MSSQLSERVER1;Database=BoynerDb;Trusted_Connection=True;"
   },
+  "DbServer": "LAPTOP-TUECF3EV\\MSSQLSERVER1",
+  //"DbPort": "",
+  "Password": "Your_password123",
+  "Database": "master",
+  "DbUser": "sa",
+  "": null,
   "Logging": {
     "LogLevel": {
       "Default": "Information",

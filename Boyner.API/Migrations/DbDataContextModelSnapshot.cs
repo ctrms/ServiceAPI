@@ -26,6 +26,15 @@ namespace Boyner.API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifyDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -34,7 +43,7 @@ namespace Boyner.API.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Boyner.API.Entities.Product", b =>
+            modelBuilder.Entity("Boyner.API.Entities.CategoryAttribute", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,7 +60,76 @@ namespace Boyner.API.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.ToTable("CategoryAttribute");
+                });
+
+            modelBuilder.Entity("Boyner.API.Entities.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsStock")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifyDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Boyner.API.Entities.ProductAttribute", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CategoryAttributeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryAttributeId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductAttribute");
+                });
+
+            modelBuilder.Entity("Boyner.API.Entities.CategoryAttribute", b =>
+                {
+                    b.HasOne("Boyner.API.Entities.Category", "Category")
+                        .WithMany("CategoryAttributes")
+                        .HasForeignKey("CategoryId");
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("Boyner.API.Entities.Product", b =>
@@ -63,9 +141,36 @@ namespace Boyner.API.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("Boyner.API.Entities.ProductAttribute", b =>
+                {
+                    b.HasOne("Boyner.API.Entities.CategoryAttribute", "CategoryAttribute")
+                        .WithMany("ProductAttributes")
+                        .HasForeignKey("CategoryAttributeId");
+
+                    b.HasOne("Boyner.API.Entities.Product", "Product")
+                        .WithMany("ProductAttributes")
+                        .HasForeignKey("ProductId");
+
+                    b.Navigation("CategoryAttribute");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Boyner.API.Entities.Category", b =>
                 {
+                    b.Navigation("CategoryAttributes");
+
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Boyner.API.Entities.CategoryAttribute", b =>
+                {
+                    b.Navigation("ProductAttributes");
+                });
+
+            modelBuilder.Entity("Boyner.API.Entities.Product", b =>
+                {
+                    b.Navigation("ProductAttributes");
                 });
 #pragma warning restore 612, 618
         }

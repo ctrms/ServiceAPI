@@ -47,15 +47,20 @@ namespace Boyner.API
             services.AddSingleton<ICacheManager, MemoryCacheManager>();
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddMvc();
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+
+
+            //string connectionString = $"Server=db;Database=master;User=sa;Password=Your_password123;";
+            string connectionString = $"Data Source =LAPTOP-TUECF3EV\\MSSQLSERVER1; Initial Catalog = BoynerDb; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False";
             services.AddDbContext<DbDataContext>(options =>
             {
                 options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Boyner.API"));
             });
+
             services.AddScoped<DbContext, DbDataContext>();
             services.AddScoped<IUnitOfWork, EfUnitOfWork>();
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
             var humanTypes = typeof(BaseQuery<>).GetTypeInfo().Assembly.DefinedTypes
               .Where(t => t.IsClosedTypeOf(typeof(BaseQuery<>)) && t.IsClass)
               .Select(p => p.AsType());
@@ -80,6 +85,7 @@ namespace Boyner.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Boyner.API v1"));
             }
+            UpdateDatabase(app);
             ServiceTool.ServiceProvider = app.ApplicationServices;
 
             app.CustomExceptionMiddleware();
@@ -94,6 +100,20 @@ namespace Boyner.API
             {
                 endpoints.MapControllers();
             });
+        }
+        private static void UpdateDatabase(IApplicationBuilder app)
+        {
+            Console.WriteLine("Run migration");
+            using (var serviceScope = app.ApplicationServices
+                .GetRequiredService<IServiceScopeFactory>()
+                .CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetService<DbDataContext>())
+                {
+                    context.Database.Migrate();
+                }
+            }
+            Console.WriteLine("End migration");
         }
     }
 }
