@@ -2,6 +2,7 @@
 using Boyner.API.Commands.CategoryInsertCommand;
 using Boyner.API.Commands.CategoryUpdateCommand;
 using Boyner.API.CrossCuttingConcerns;
+using Boyner.API.CrossCuttingConcerns.Aspect;
 using Boyner.API.ModelDtos;
 using Boyner.API.Results;
 using MediatR;
@@ -22,21 +23,28 @@ namespace Boyner.API.Services
             _cache = cache;
             _mediator = mediator;
         }
+
+        [CacheRemoveAspect("ICategoryService.GetAll")]
         public async Task<IDataResult<int>> AddAsync(CategoryInsertCommand categoryInsertCommand)
         {
             var result = await _mediator.Send(categoryInsertCommand);
             return new SuccessDataResult<int>(result);
         }
+
+        [CacheRemoveAspect("ICategoryService.GetAll")]
         public async Task<IDataResult<int>> DeleteAsync(CategoryDeleteCommand categoryDeleteCommand)
         {
             var result = await _mediator.Send(categoryDeleteCommand);
             return new SuccessDataResult<int>(result);
         }
+
+        [CacheRemoveAspect("ICategoryService.GetAll")]
         public async Task<IDataResult<int>> UpdateAsync(CategoryUpdateCommand categoryUpdateCommand)
         {
             var result = await _mediator.Send(categoryUpdateCommand);
             return new SuccessDataResult<int>(result);
         }
+        [CacheAspect(duration: 2)]
         public async Task<IDataResult<List<CategoryListViewModel>>> GetAllAsync(string name, string attribute)
         {
             var categories = await _categoryQuery.GetAll(name, attribute);

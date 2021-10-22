@@ -61,4 +61,6 @@ C:\Users\Lenova\source\repos\Boyner.API\Boyner.API\bin\Debug\net5.0\Autofac.Extr
 C:\Users\Lenova\source\repos\Boyner.API\Boyner.API\bin\Debug\net5.0\Castle.Core.dll
 C:\Users\Lenova\source\repos\Boyner.API\Boyner.API\bin\Debug\net5.0\FluentValidation.dll
 C:\Users\Lenova\source\repos\Boyner.API\Boyner.API\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\Lenova\source\repos\Boyner.API\Boyner.API\obj\Debug\net5.0\Boyner.API.csproj.CopyComplete
+C:\Users\Lenova\source\repos\Boyner.API\Boyner.API\bin\Debug\net5.0\boynerapi.postman_collection.json
+C:\Users\Lenova\source\repos\Boyner.API\Boyner.API\obj\Debug\net5.0\Boyner.API.csproj.AssemblyReference.cache
+C:\Users\Lenova\source\repos\Boyner.API\Boyner.API\bin\Debug\net5.0\Autofac.Extensions.DependencyInjection.dll

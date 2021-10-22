@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "RLm9U7U+swww6lJmtUtxeKUbnujWjw8WF5Moe2rvvoH0BVx2S3b+QtmpNz4D7/NLLiT60HySyu8mB3IoeQd64Q==",
+  "dgSpecHash": "6ZbpQtDhk/w0tSK+EFopm016etKGivk6j+PVMc6VmvNedRCck2LqpS8c+GV/gLd+T0XXgWAVICqscK37OovNkg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenova\\source\\repos\\Boyner.API\\Boyner.API\\Boyner.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenova\\.nuget\\packages\\autofac\\6.3.0\\autofac.6.3.0.nupkg.sha512",
+    "C:\\Users\\Lenova\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.1.0\\autofac.extensions.dependencyinjection.7.1.0.nupkg.sha512",
     "C:\\Users\\Lenova\\.nuget\\packages\\autofac.extras.dynamicproxy\\6.0.0\\autofac.extras.dynamicproxy.6.0.0.nupkg.sha512",
     "C:\\Users\\Lenova\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\Lenova\\.nuget\\packages\\fluentvalidation\\10.3.3\\fluentvalidation.10.3.3.nupkg.sha512",

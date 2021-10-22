@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "18dbc2e8-94f6-4f38-b704-ef92caa4b5d8",
+		"name": "boynerapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "update product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Product bir\"\r\n  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1148/product/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1148",
+					"path": [
+						"product",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add product docker",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n  \"name\": \"Product a\",\r\n  \"price\": \"1.23\",\r\n  \"isStock\": true,\r\n  \"categoryid\":\"1\",\r\n  \"Attributes\":[{\r\n      \"Value\":\"test\",\r\n      \"CategoryAttributeId\":1\r\n  }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/Product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"Product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get categories docker",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/category/?name=smart2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"category",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "smart2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get products docker",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/product/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"product",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add category docker",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"b\",\r\n  \"attributes\": [\r\n    \"b1\",\r\n    \"b2\",\r\n    \"b3\"\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
