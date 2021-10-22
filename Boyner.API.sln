@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Boyner.API", "Boyner.API\Bo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B5DD8015-656A-4908-96E3-309AC522E2C4}"
 	ProjectSection(SolutionItems) = preProject
+		Boyner.API\boynerapi.postman_collection.json = Boyner.API\boynerapi.postman_collection.json
 		readme.txt = readme.txt
 	EndProjectSection
 EndProject
