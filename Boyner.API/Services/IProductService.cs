@@ -17,9 +17,6 @@ namespace Boyner.API.Services
             string attributeValue,
             decimal? priceStart,
             decimal? priceEnd);
-        Task<IDataResult<List<ProductViewModel>>> GetByNameAsync(string name);
-        Task<IDataResult<List<ProductViewModel>>> GetByCategoryNameAsync(string categoryName);
-        Task<IDataResult<List<ProductViewModel>>> GetByAttributeAsync(string attributeName, string attributeValue);
         Task<IDataResult<ProductViewModel>> GetByIdAsync(int id);
         Task<IDataResult<int>> AddAsync(ProductInsertCommand productInsertCommand);
         Task<IDataResult<int>> UpdateAsync(ProductUpdateCommand productUpdateCommand);

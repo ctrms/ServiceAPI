@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Boyner.API.Migrations
 {
     [DbContext(typeof(DbDataContext))]
-    [Migration("20211022122025_mig")]
-    partial class mig
+    [Migration("20211022125654_firstmig")]
+    partial class firstmig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

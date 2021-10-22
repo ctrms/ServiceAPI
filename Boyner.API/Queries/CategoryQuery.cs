@@ -51,41 +51,5 @@ namespace Boyner.API.Queries
                 }).ToList(),
             };
         }
-        public async Task<List<CategoryViewModel>> GetByName(string name)
-        {
-
-            var categories = await Query.Include(p => p.Products)
-                .ThenInclude(p => p.ProductAttributes)
-                .ThenInclude(p => p.CategoryAttribute)
-                .Include(p => p.CategoryAttributes)
-                .Where(p => p.Name == name).ToListAsync();
-
-            return categories.Select(p => new CategoryViewModel
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Attributes = p.CategoryAttributes.Select(p => new CategoryAttributeModelView
-                {
-                    Name = p.Name,
-                }).ToList(),
-            }).ToList();
-        }
-        public async Task<List<CategoryViewModel>> GetByAttribute(string attribute)
-        {
-
-            var categories = await Query
-                .Include(p => p.CategoryAttributes)
-                .Where(p => p.CategoryAttributes.Any(ca => ca.Name == attribute)).ToListAsync();
-
-            return categories.Select(p => new CategoryViewModel
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Attributes = p.CategoryAttributes.Select(p => new CategoryAttributeModelView
-                {
-                    Name = p.Name,
-                }).ToList()
-            }).ToList();
-        }
     }
 }

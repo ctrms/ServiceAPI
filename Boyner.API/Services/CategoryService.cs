@@ -47,16 +47,5 @@ namespace Boyner.API.Services
                 CategoryAttributes = c.CategoryAttributes.Select(a =>  new CategoryAttributeViewModel { Id = a.Id, Name = a.Name }).ToList()
             }).ToList()) ;
         }
-
-        public async Task<IDataResult<List<CategoryViewModel>>> GetByNameAsync(string name)
-        {
-            var result = await _categoryQuery.GetByName(name);
-            return new SuccessDataResult<List<CategoryViewModel>>(result);
-        }
-        public async Task<IDataResult<List<CategoryViewModel>>> GetByAttributeAsync(string attributeName)
-        {
-            var result = await _categoryQuery.GetByAttribute(attributeName);
-            return new SuccessDataResult<List<CategoryViewModel>>(result);
-        }
     }
 }

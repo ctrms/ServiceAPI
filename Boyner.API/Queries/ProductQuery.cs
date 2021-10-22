@@ -42,18 +42,15 @@ namespace Boyner.API.Queries
             var product = await products.Select(
                 p => new ProductListViewModel
                 {
-                    ProductId = p.Id,
                     Name = p.Name,
                     CategoryName = p.Category.Name,
                     Price = p.Price,
                     IsStock = p.IsStock,
                     ProductAttributes = p.ProductAttributes.Select(pa => new ProductAttributeViewModel
                     {
-                        Id = pa.Id,
                         Value = pa.Value,
                         CaetgoryAttribute = new CaetgoryAttributeViewModel
                         {
-                            Id = pa.CategoryAttribute.Id,
                             Name = pa.CategoryAttribute.Name
                         }
                     }).ToList()
@@ -66,7 +63,6 @@ namespace Boyner.API.Queries
                . FirstOrDefaultAsync(p => p.Id == id);
             return new ProductViewModel
             {
-                Id = product.Id,
                 Name = product.Name,
                 IsActive = product.IsActive,
                 IsStock = product.IsStock,
@@ -74,47 +70,6 @@ namespace Boyner.API.Queries
                 CategoryId = product.Category.Id
             };
         }
-        public async Task<List<ProductViewModel>> GetByCategoryName(string categoryName)
-        {
-            var products = await Query.Include(p => p.Category)
-                .Include(p=>p.ProductAttributes).ThenInclude(p=>p.CategoryAttribute)
-                .Where(p => p.Category.Name == categoryName).ToListAsync();
-            return ConvertViewModel(products);
-        }
-        public async Task<List<ProductViewModel>> GetByName(string name)
-        {
-
-            var products = await Query.Include(p => p.Category)
-                .Include(p => p.ProductAttributes).ThenInclude(p => p.CategoryAttribute)
-                .Where(p => p.Name == name).ToListAsync();
-            return ConvertViewModel(products);
-        }
-       
-        public async Task<List<ProductViewModel>> GetByAttribute(string attributeName,string attributeValue)
-        {
-
-            var products = await Query.Include(p => p.Category)
-                .Include(p => p.ProductAttributes).ThenInclude(p => p.CategoryAttribute)
-                .Where(a=>a.ProductAttributes.Any(a=>a.Value== attributeValue&&a.CategoryAttribute.Name== attributeName))
-                .ToListAsync();
-            return ConvertViewModel(products);
-        }
-        private static List<ProductViewModel> ConvertViewModel(List<Product> products)
-        {
-            return products.Select(p => new ProductViewModel
-            {
-                Id = p.Id,
-                Name = p.Name,
-                IsActive = p.IsActive,
-                IsStock = p.IsStock,
-                Price = p.Price,
-                CategoryId = p.Category.Id,
-                Attributes = p.ProductAttributes.Select(p => new ProductAttributeModelView
-                {
-                    Name = p.CategoryAttribute.Name,
-                    Value = p.Value
-                }).ToList()
-            }).ToList();
-        }
+      
     }
 }

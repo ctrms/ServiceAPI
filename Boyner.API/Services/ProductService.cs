@@ -32,26 +32,11 @@ namespace Boyner.API.Services
             var result = await _productQuery.GetAll(name, categoryName, attributeName, attributeValue, priceStart, priceEnd);
             return new SuccessDataResult<List<ProductListViewModel>>(result);
         }
-        public async Task<IDataResult<List<ProductViewModel>>> GetByNameAsync(string name)
-        {
-            var result = await _productQuery.GetByName(name);
-            return new SuccessDataResult<List<ProductViewModel>>(result);
-        }
+      
         public async Task<IDataResult<ProductViewModel>> GetByIdAsync(int id)
         {
             var result = await _productQuery.GetById(id);
             return new SuccessDataResult<ProductViewModel>(result);
-        }
-
-    public async Task<IDataResult<List<ProductViewModel>>> GetByCategoryNameAsync(string categoryName)
-        {
-            var result = await _productQuery.GetByCategoryName(categoryName);
-            return new SuccessDataResult<List<ProductViewModel>>(result);
-        }
-        public async Task<IDataResult<List<ProductViewModel>>> GetByAttributeAsync(string attributeName, string attributeValue)
-        {
-            var result = await _productQuery.GetByAttribute(attributeName, attributeValue);
-            return new SuccessDataResult<List<ProductViewModel>>(result);
         }
         public async Task<IDataResult<int>> AddAsync(ProductInsertCommand productInsertCommand)
         {
